@@ -30,9 +30,9 @@ metadata:
 spec:
   ports:
   - nodePort: 32223
-    port: 8080
+    port: 8181
     protocol: TCP
-    targetPort: 8181
+    targetPort: 8080
   selector:
     app: myweb
   type: NodePort
