@@ -35,4 +35,4 @@ spec:
     targetPort: 8080
   selector:
     app: myweb
-  type: NodePort
+  type: LoadBalancer
