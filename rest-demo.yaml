@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rest-demo
+  name: rest-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-demo
+  template:
+    metadata:
+      labels:
+        app: rest-demo
+    spec:
+      containers:
+      - image: jlandero/rest-demo:1.0
+        imagePullPolicy: Always
+        name: rest-demo
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rest-demo
+  name: rest-demo
+spec:
+  ports:
+  - nodePort: 32223
+    port: 8282
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: rest-demo
+  type: LoadBalancer
